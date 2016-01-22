@@ -45,6 +45,9 @@ function buildPrivatePub(doc) {
     },
 
     sign: function(options) {
+      // Exit early if already subscribed
+      if(self.subscriptionObjects[options.channel]) return false;
+
       if (!self.subscriptions.server) {
         self.subscriptions.server = options.server;
       }
